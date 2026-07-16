@@ -1,7 +1,6 @@
 [build]
-  base = "metron-middle-east"
-  command = "npm run build"
-  publish = "dist/public"
+  command = "cd metron-middle-east && npm run build"
+  publish = "metron-middle-east/dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
