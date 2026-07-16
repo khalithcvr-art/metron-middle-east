@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev": "npx vite --host",
+    "build": "npx vite build",
+    "build:server": "npx vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
-    "preview": "vite preview --host",
+    "preview": "npx vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write ."
   },
