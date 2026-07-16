@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production
+dist/
+build/
+.next/
+out/
+
+# Development
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*~
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Lock files (for monorepo, optional)
+# package-lock.json
+# yarn.lock
