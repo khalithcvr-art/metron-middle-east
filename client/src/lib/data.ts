@@ -214,6 +214,13 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+/* Standalone photo reel shown by the "Our Projects Gallery" card on the
+   Projects page. Sourced from the company's shared project album. */
+export const GALLERY_IMAGES: string[] = Array.from(
+  { length: 66 },
+  (_, i) => `/images/gallery/gallery_${String(i + 1).padStart(2, "0")}.jpg`,
+);
+
 export const PRODUCTS = [
   {
     img: "/images/PRODUCT_SECTION_FURNITURE_IMAGE_ICON.jpeg",
