@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { PROJECTS, FILTERS, CATEGORY_LABEL, Project, Category } from "../lib/data";
+import { PROJECTS, FILTERS, CATEGORY_LABEL, GALLERY_IMAGES, Project, Category } from "../lib/data";
 import { useReveal } from "../hooks/useReveal";
 import Gallery from "../components/Gallery";
 
@@ -77,29 +77,22 @@ export default function Projects() {
     .map((id) => PROJECTS.find((p) => p.id === id))
     .filter((p): p is Project => Boolean(p));
 
-  /* A synthetic "gallery" card that pulls a shuffled mix of images from
-     across every project, so visitors can browse a highlight reel. Computed
-     once per mount so the modal stays stable while it is open. */
+  /* A synthetic "gallery" card holding the full photo reel from the company
+     project album, shuffled for variety. Computed once per mount so the
+     modal stays stable while it is open. */
   const galleryProject = useMemo<Project>(() => {
-    const pool = Array.from(
-      new Set(
-        PROJECTS.flatMap((p) =>
-          p.gallery.map((g) => (typeof g === "string" ? g : g.src)),
-        ),
-      ),
-    );
+    const pool = [...GALLERY_IMAGES];
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
-    const picks = pool.slice(0, 12);
     return {
       id: "projects-gallery",
       title: "Our Projects Gallery",
       category: "venues",
       location: "Middle East & Europe",
-      cover: picks[0] ?? "/images/etihad_arena.jpg",
-      gallery: picks,
+      cover: pool[0],
+      gallery: pool,
     };
   }, []);
 
