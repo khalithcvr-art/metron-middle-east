@@ -296,9 +296,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/etihad_arena.jpg");
+  background-image: url("/images/Santanna_Enorme_Beach_Resort_IMAGE_2_.jpg");
   background-size: cover;
   background-position: center;
+  filter: saturate(1.06) contrast(1.04) brightness(1.02);
   transform: scale(1.05);
   animation: m-hero-zoom 12s ease-out forwards;
 }
@@ -311,9 +312,10 @@
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(0, 0, 0, 0.62) 0%,
-    rgba(0, 0, 0, 0.38) 45%,
-    rgba(0, 0, 0, 0.15) 100%
+    rgba(0, 0, 0, 0.58) 0%,
+    rgba(0, 0, 0, 0.30) 38%,
+    rgba(0, 0, 0, 0.06) 70%,
+    rgba(0, 0, 0, 0) 100%
   );
 }
 .m-hero-content {
@@ -1059,6 +1061,16 @@
   .m-nav-link:last-child { border-bottom: none; }
   .m-menu-toggle { display: flex; }
   .m-hero-content { padding: 120px 0 64px; }
+  /* On narrow screens the hero text spans full width, so add a vertical
+     scrim to keep it legible over the bright resort image. */
+  .m-hero::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.28) 45%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+  }
   .m-section { padding: 72px 0; }
   .m-contact-content {
     flex-direction: column;
