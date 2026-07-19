@@ -34,7 +34,6 @@ import {
   Trophy,
   Camera,
   MessageCircle,
-  Video,
   ClipboardCheck,
   Activity,
   Utensils,
@@ -1660,8 +1659,6 @@ function Footer() {
             <div className="mt-6 flex gap-3">
               {[
                 { icon: Camera, label: 'Instagram', href: 'https://www.instagram.com/j_d__lifestyle?igsh=ams4Y2U1Nmp4bXVh' },
-                { icon: MessageCircle, label: 'Twitter', href: '#' },
-                { icon: Video, label: 'YouTube', href: '#' },
               ].map((s) => (
                 <a
                   key={s.label}
