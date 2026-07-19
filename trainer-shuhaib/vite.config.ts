@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), viteSingleFile()],
   build: {
     cssCodeSplit: false,
+    assetsInlineLimit: 2_000_000,
   },
 });

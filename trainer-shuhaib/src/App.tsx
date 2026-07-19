@@ -44,6 +44,7 @@ import {
   Medal,
   CalendarCheck,
 } from 'lucide-react';
+import shoulderWorkoutVideo from './assets/shoulder-workout.mp4';
 
 /* ─── Intersection Observer Hook ─── */
 function useAnimateInView(threshold = 0.15) {
@@ -425,26 +426,17 @@ function Hero() {
             className="relative mt-16 w-full max-w-5xl"
           >
             <div className="glow-brand relative overflow-hidden rounded-3xl border border-white/10">
-              <img
-                src="https://i.imgur.com/qPjUdSi.jpeg"
-                alt="Trainer Shuhaib - elite personal training gym in Dubai"
+              <video
+                src={shoulderWorkoutVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Trainer Shuhaib demonstrating a shoulder workout in his Dubai gym"
                 className="h-[350px] w-full object-cover sm:h-[450px] lg:h-[550px]"
-                loading="eager"
-                referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-dark-950/50 via-transparent to-dark-950/50" />
-
-              {/* Floating play button overlay */}
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              >
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-500/90 shadow-2xl shadow-brand-500/40 backdrop-blur-sm cursor-pointer transition-shadow hover:shadow-brand-500/60 sm:h-24 sm:w-24">
-                  <Play className="h-8 w-8 text-dark-950 ml-1 sm:h-10 sm:w-10" fill="currentColor" />
-                </div>
-              </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-dark-950/40 via-transparent to-dark-950/40" />
             </div>
 
             {/* Ambient decorative elements */}
