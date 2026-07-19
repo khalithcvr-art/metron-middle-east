@@ -252,7 +252,7 @@ function Navbar() {
         {/* CTA */}
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="#pricing"
+            href="?page=leads"
             className="btn-glow inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-400 px-6 py-2.5 text-sm font-semibold text-dark-950 shadow-lg shadow-brand-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/30 hover:scale-105"
           >
             Start Training
@@ -295,7 +295,7 @@ function Navbar() {
                 </motion.a>
               ))}
               <a
-                href="#pricing"
+                href="?page=leads"
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 px-6 py-3 text-sm font-semibold text-dark-950"
                 onClick={() => setMobileOpen(false)}
               >
@@ -373,7 +373,7 @@ function Hero() {
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
             <a
-              href="#pricing"
+              href="?page=leads"
               className="btn-glow group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-400 px-8 py-4 text-base font-bold text-dark-950 shadow-xl shadow-brand-500/25 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-500/35 hover:scale-105"
             >
               Start Your Transformation
@@ -1390,7 +1390,7 @@ function Pricing() {
                   </div>
 
                   <a
-                    href="#"
+                    href="?page=leads"
                     className={`mt-8 flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-bold transition-all duration-300 hover:scale-[1.02] ${
                       plan.popular
                         ? 'bg-gradient-to-r from-brand-500 to-brand-400 text-dark-950 shadow-lg shadow-brand-500/25 hover:shadow-xl hover:shadow-brand-500/35'
@@ -1580,7 +1580,7 @@ function FinalCTA() {
 
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <a
-                  href="#pricing"
+                  href="?page=leads"
                   className="btn-glow group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-400 px-10 py-5 text-lg font-bold text-dark-950 shadow-xl shadow-brand-500/25 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-500/40 hover:scale-105"
                 >
                   Start Your Journey
