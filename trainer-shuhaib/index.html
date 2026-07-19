@@ -65,6 +65,26 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Static mirror of the lead-capture form so Netlify's build-time form
+         parser (which only reads raw HTML, not client-rendered React) can
+         detect it. Never shown to visitors; the real form in LeadsPage.tsx
+         submits to this same form name. -->
+    <form name="lead-capture" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <select name="goal">
+        <option>Fat Loss</option>
+        <option>Muscle Building</option>
+        <option>Strength / Powerlifting</option>
+        <option>Athletic Performance</option>
+        <option>Total Transformation</option>
+      </select>
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
