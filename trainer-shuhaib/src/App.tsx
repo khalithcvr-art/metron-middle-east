@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useRef, type ReactNode, type ComponentType } from 'react';
 import {
   motion,
   useScroll,
@@ -44,6 +44,17 @@ import {
   CalendarCheck,
 } from 'lucide-react';
 import shoulderWorkoutVideo from './assets/shoulder-workout.mp4';
+import galleryDeadlift from './assets/gallery-deadlift.jpg';
+import galleryLatPulldown from './assets/gallery-lat-pulldown.jpg';
+import galleryBattleRopes from './assets/gallery-battle-ropes.jpg';
+import galleryCableCurl from './assets/gallery-cable-curl.jpg';
+import galleryBackFlex from './assets/gallery-back-flex.jpg';
+import galleryCoachCable from './assets/gallery-coach-cable.jpg';
+import nutritionHydration from './assets/nutrition-hydration.jpg';
+import instagram1 from './assets/instagram-1.jpg';
+import instagram2 from './assets/instagram-2.jpg';
+import instagram3 from './assets/instagram-3.jpg';
+import instagram4 from './assets/instagram-4.jpg';
 
 /* ─── Intersection Observer Hook ─── */
 function useAnimateInView(threshold = 0.15) {
@@ -189,9 +200,21 @@ function SectionDivider() {
 }
 
 /* ─── Section Badge ─── */
-function SectionBadge({ icon: Icon, children }: { icon: typeof Star; children: ReactNode }) {
+function SectionBadge({
+  icon: Icon,
+  children,
+  accent = 'brand',
+}: {
+  icon: ComponentType<{ className?: string }>;
+  children: ReactNode;
+  accent?: 'brand' | 'amber';
+}) {
+  const styles =
+    accent === 'amber'
+      ? 'border-amber-500/20 bg-amber-500/5 text-amber-400'
+      : 'border-brand-500/20 bg-brand-500/5 text-brand-400';
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/20 bg-brand-500/5 px-4 py-1.5 text-sm font-medium text-brand-400 mb-4">
+    <div className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium mb-4 ${styles}`}>
       <Icon className="h-4 w-4" />
       {children}
     </div>
@@ -419,7 +442,7 @@ function Hero() {
                   <stat.icon className="h-5 w-5 text-brand-400" />
                 </div>
                 <div className="text-left">
-                  <div className="font-display text-xl font-bold text-white sm:text-2xl">{stat.value}</div>
+                  <div className="font-stat text-2xl tracking-wide text-white sm:text-3xl">{stat.value}</div>
                   <div className="text-xs text-dark-400 sm:text-sm">{stat.label}</div>
                 </div>
               </motion.div>
@@ -501,8 +524,12 @@ function KeywordMarquee() {
    SOCIAL PROOF BAR
    ═══════════════════════════════════════════ */
 function SocialProof() {
-  const logos = [
-    'Muscle & Fitness', 'Men\'s Health', 'Bodybuilding.com', 'T-Nation', 'AthleteX',
+  const facts = [
+    { icon: Medal, label: 'Certified Personal Trainer' },
+    { icon: MapPin, label: 'Based in Dubai, UAE' },
+    { icon: Users, label: '500+ Clients Coached' },
+    { icon: Clock, label: '8+ Years Experience' },
+    { icon: Camera, label: '@j_d__lifestyle' },
   ];
 
   return (
@@ -511,19 +538,20 @@ function SocialProof() {
       <RevealSection>
         <div className="mx-auto max-w-7xl px-6 pt-12">
           <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-dark-500">
-            Recognized & Featured By
+            Real Credentials, Real Results
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
-            {logos.map((name, i) => (
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14">
+            {facts.map((f, i) => (
               <motion.div
-                key={name}
+                key={f.label}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="font-display text-lg font-bold text-dark-500/60 transition-colors hover:text-dark-300 sm:text-xl"
+                className="flex items-center gap-2 text-dark-400 transition-colors hover:text-dark-200"
               >
-                {name}
+                <f.icon className="h-4 w-4 text-brand-400" />
+                <span className="font-display text-sm font-bold sm:text-base">{f.label}</span>
               </motion.div>
             ))}
           </div>
@@ -637,7 +665,7 @@ function About() {
               {stats.map((s) => (
                 <StaggerItem key={s.label}>
                   <div className="text-center sm:text-left">
-                    <div className="font-display text-3xl font-extrabold text-gradient sm:text-4xl">
+                    <div className="font-stat text-4xl tracking-wide text-gradient sm:text-5xl">
                       <CountUp end={s.end} suffix={s.suffix} />
                     </div>
                     <div className="mt-1 text-xs uppercase tracking-wider text-dark-400">{s.label}</div>
@@ -910,34 +938,34 @@ function Method() {
 function Gallery() {
   const shots = [
     {
-      src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80',
+      src: galleryDeadlift,
       title: 'Strength Training',
       tag: 'Compound lifts & raw power',
     },
     {
-      src: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=80',
-      title: 'Bodyweight Mastery',
-      tag: 'Calisthenics & total control',
+      src: galleryLatPulldown,
+      title: 'Back Training',
+      tag: 'Pulldowns built for a wider, stronger back',
     },
     {
-      src: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=900&q=80',
-      title: 'Progressive Overload',
-      tag: 'Structured barbell work',
+      src: galleryBattleRopes,
+      title: 'Conditioning',
+      tag: 'High-intensity metabolic finishers',
     },
     {
-      src: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80',
-      title: 'Powerlifting',
-      tag: 'Deadlift, squat & press mechanics',
+      src: galleryCableCurl,
+      title: 'Arm Training',
+      tag: 'Isolated cable work for detail & size',
     },
     {
-      src: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80',
-      title: 'Hypertrophy',
-      tag: 'Muscle-building precision',
+      src: galleryBackFlex,
+      title: 'Physique Development',
+      tag: 'Built through years of consistent training',
     },
     {
-      src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80',
-      title: 'Core & Conditioning',
-      tag: 'Ab work & metabolic finishers',
+      src: galleryCoachCable,
+      title: 'Coached Sessions',
+      tag: 'Hands-on coaching, every single rep',
     },
   ];
 
@@ -1031,7 +1059,7 @@ function Benefits() {
                     <Trophy className="h-6 w-6 text-brand-400" />
                   </div>
                   <div>
-                    <div className="font-display text-2xl font-bold text-white">
+                    <div className="font-stat text-3xl tracking-wide text-white">
                       <CountUp end={500} suffix="+" />
                     </div>
                     <div className="text-sm text-dark-400">Transformations</div>
@@ -1064,7 +1092,7 @@ function Benefits() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">{b.title}</h4>
-                      <p className="mt-1 text-sm leading-relaxed text-dark-400">{b.desc}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-dark-300">{b.desc}</p>
                     </div>
                   </div>
                 </StaggerItem>
@@ -1112,10 +1140,10 @@ function Nutrition() {
           {/* Left - Content */}
           <div className="order-2 lg:order-1">
             <RevealSection>
-              <SectionBadge icon={Utensils}>Fuel & Recover</SectionBadge>
+              <SectionBadge icon={Utensils} accent="amber">Fuel & Recover</SectionBadge>
               <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
                 Abs Are Built in the Gym.{' '}
-                <span className="text-gradient">Revealed in the Kitchen.</span>
+                <span className="text-gradient-warm">Revealed in the Kitchen.</span>
               </h2>
               <p className="mt-4 text-lg text-dark-300">
                 Training is only half the equation. Every coaching plan includes complete
@@ -1127,9 +1155,9 @@ function Nutrition() {
             <StaggerContainer className="mt-10 space-y-5" staggerDelay={0.1}>
               {pillars.map((p) => (
                 <StaggerItem key={p.title}>
-                  <div className="glass group flex gap-4 rounded-2xl p-5 transition-all duration-300 hover:border-brand-500/20">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500/20">
-                      <p.icon className="h-6 w-6 text-brand-400" />
+                  <div className="glass group flex gap-4 rounded-2xl p-5 transition-all duration-300 hover:border-amber-500/20">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 transition-colors group-hover:bg-amber-500/20">
+                      <p.icon className="h-6 w-6 text-amber-400" />
                     </div>
                     <div>
                       <h4 className="font-display text-lg font-bold text-white">{p.title}</h4>
@@ -1146,9 +1174,9 @@ function Nutrition() {
             <div className="relative">
               <div className="glow-brand-sm img-zoom relative overflow-hidden rounded-3xl border border-white/10">
                 <img
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
-                  alt="Precision nutrition and meal planning for body transformation"
-                  className="aspect-[4/5] w-full object-cover"
+                  src={nutritionHydration}
+                  alt="Trainer Shuhaib refueling with a post-workout shake after training in Dubai"
+                  className="aspect-[4/5] w-full object-cover object-top"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
@@ -1169,7 +1197,7 @@ function Nutrition() {
                     { label: 'Fats', value: '25%' },
                   ].map((m) => (
                     <div key={m.label} className="text-center">
-                      <div className="font-display text-lg font-bold text-brand-400">{m.value}</div>
+                      <div className="font-display text-lg font-bold text-amber-400">{m.value}</div>
                       <div className="text-[10px] uppercase tracking-wide text-dark-400">{m.label}</div>
                     </div>
                   ))}
@@ -1378,7 +1406,7 @@ function Pricing() {
 
                 <div className="relative z-10">
                   <h3 className="font-display text-xl font-bold text-white">{plan.name}</h3>
-                  <p className="mt-2 text-sm text-dark-400">{plan.desc}</p>
+                  <p className="mt-2 text-sm text-dark-300">{plan.desc}</p>
 
                   <div className="mt-6 flex items-baseline gap-2">
                     <span className="text-xl font-bold text-brand-400">AED</span>
@@ -1615,6 +1643,67 @@ function FinalCTA() {
 }
 
 /* ═══════════════════════════════════════════
+   INSTAGRAM STRIP
+   ═══════════════════════════════════════════ */
+function InstagramStrip() {
+  const photos = [instagram1, instagram2, instagram3, instagram4];
+
+  return (
+    <section className="relative py-20">
+      <SectionDivider />
+      <div className="mx-auto max-w-5xl px-6 pt-12 text-center">
+        <RevealSection>
+          <SectionBadge icon={InstagramIcon}>Follow Along</SectionBadge>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
+            More of the Grind on{' '}
+            <span className="text-gradient">Instagram</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-dark-300">
+            Daily training clips, form breakdowns, and real client sessions —{' '}
+            <span className="text-brand-400">@j_d__lifestyle</span>
+          </p>
+        </RevealSection>
+
+        <StaggerContainer className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4" staggerDelay={0.08}>
+          {photos.map((src, i) => (
+            <StaggerItem key={i}>
+              <a
+                href="https://www.instagram.com/j_d__lifestyle?igsh=ams4Y2U1Nmp4bXVh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="img-zoom group relative block aspect-square overflow-hidden rounded-2xl border border-white/10"
+              >
+                <img
+                  src={src}
+                  alt="Trainer Shuhaib on Instagram — behind the scenes training content"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-dark-950/0 opacity-0 transition-all duration-300 group-hover:bg-dark-950/60 group-hover:opacity-100">
+                  <InstagramIcon className="h-6 w-6 text-white" />
+                </div>
+              </a>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+
+        <RevealSection delay={0.2} className="mt-8">
+          <a
+            href="https://www.instagram.com/j_d__lifestyle?igsh=ams4Y2U1Nmp4bXVh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10"
+          >
+            <InstagramIcon className="h-4 w-4 text-brand-400" />
+            Follow @j_d__lifestyle
+          </a>
+        </RevealSection>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════ */
 function Footer() {
@@ -1661,7 +1750,7 @@ function Footer() {
                 Shuhaib<span className="text-brand-400">.</span>
               </span>
             </a>
-            <p className="mt-4 max-w-xs text-base text-dark-400">
+            <p className="mt-4 max-w-xs text-base text-dark-300">
               Elite personal training for those who refuse to settle for average.
               Transform your body. Elevate your life.
             </p>
@@ -1818,6 +1907,7 @@ export default function App() {
       <Pricing />
       <FAQ />
       <FinalCTA />
+      <InstagramStrip />
       <Footer />
       <FloatingWhatsApp />
     </div>
