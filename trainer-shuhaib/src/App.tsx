@@ -1010,10 +1010,11 @@ function Benefits() {
             <div className="relative">
               <div className="glow-brand-sm img-zoom relative overflow-hidden rounded-3xl border border-white/10">
                 <img
-                  src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80"
-                  alt="Elite strength training session with Trainer Shuhaib"
-                  className="aspect-[4/5] w-full object-cover"
+                  src="https://i.imgur.com/6uHBwDx.jpeg"
+                  alt="Trainer Shuhaib flexing after an elite strength training session in Dubai"
+                  className="aspect-[4/5] w-full object-cover object-top"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
               </div>
