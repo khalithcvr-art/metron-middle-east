@@ -6,25 +6,54 @@ originally built with Claude Code. Files are being re-uploaded in batches.
 **Stack:** Vite 5 + React 18 + TypeScript + Tailwind CSS 3 + React Router 7 + Three.js + Supabase
 **Fonts:** Inter Variable, Sora Variable, Marcellus, IBM Plex Sans Arabic
 
-## Recovered so far (batch 1 — 2026-07-21)
+## Recovered so far
 
+### Batch 1 (2026-07-21)
 - [x] `package.json`
 - [x] `package-lock.json`
 - [x] `index.html` (full SEO/structured-data head + noscript fallback)
 - [x] `tailwind.config.js` (brand navy/gold theme, champagne-gold amber remap)
 - [x] `vite.config.ts`
 
+### Batch 2 (2026-07-21)
+- [x] `postcss.config.js`
+- [x] `src/main.tsx`
+- [x] `src/App.tsx` (routes: `/`, `/services`, `/blog`, `/blog/:slug`, `/ar`, `/:slug`)
+- [x] `src/index.css` (+ `index.css.bak` backup)
+
 ## Still needed (please upload)
 
-### Critical — app will not build without these
-- [ ] `src/` folder — **everything inside it**, especially:
-  - `src/main.tsx` (entry point referenced by index.html)
-  - `src/App.tsx` and all page/section components
-  - `src/index.css` (Tailwind entry + custom styles)
-  - any Supabase client setup file (e.g. `src/lib/supabase.ts`)
-- [ ] `scripts/prerender.mjs` (referenced by the `build` script)
+### Components — `src/components/` (all imported by App.tsx)
+- [ ] `Navbar.tsx`
+- [ ] `Hero.tsx`
+- [ ] `TrustBar.tsx`
+- [ ] `Services.tsx`
+- [ ] `ServicesShowcase.tsx`
+- [ ] `HowItWorks.tsx`
+- [ ] `ChannelPartners.tsx`
+- [ ] `CostCalculator.tsx`
+- [ ] `WhyUs.tsx`
+- [ ] `Testimonials.tsx`
+- [ ] `FAQ.tsx`
+- [ ] `Contact.tsx`
+- [ ] `Footer.tsx`
+- [ ] `MouseFollowCursor.tsx`
+- [ ] `FloatingWhatsApp.tsx`
+- [ ] `MobileCTABar.tsx`
+- [ ] `ScrollToTop.tsx`
+- [ ] plus any other files in `src/components/` (helpers, sub-components)
+
+### Pages — `src/pages/` (all imported by App.tsx)
+- [ ] `ZonePage.tsx`
+- [ ] `Blog.tsx`
+- [ ] `BlogPost.tsx`
+- [ ] `ArabicHome.tsx`
+- [ ] `ServicesPage.tsx`
+
+### Other source files
+- [ ] anything in `src/lib/` or `src/data/` (Supabase client, blog data, zone data, etc.)
+- [ ] `scripts/prerender.mjs` (referenced by the `build` script — build fails without it)
 - [ ] `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
-- [ ] `postcss.config.js`
 - [ ] `eslint.config.js`
 
 ### Public assets (referenced by index.html)
