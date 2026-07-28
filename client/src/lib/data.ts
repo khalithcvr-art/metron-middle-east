@@ -15,7 +15,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "sapia",
-    title: "Sapia Al Ain Zoo",
+    title: "Zapia Al Ain Zoo",
     category: "venues",
     location: "Abu Dhabi",
     cover: "/images/AL_AIN_ZOO.jpeg",
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "velodrome",
-    title: "Velodrome Modern",
+    title: "Velodrome",
     category: "commercial",
     location: "Abu Dhabi",
     cover: "/images/velodrome_main.jpg",
