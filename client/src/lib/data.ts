@@ -227,11 +227,25 @@ export const GALLERY_IMAGES: string[] = GALLERY_IMAGE_NUMBERS.map(
   (n) => `/images/gallery/gallery_${String(n).padStart(2, "0")}.jpg`,
 );
 
-export const PRODUCTS = [
+export interface ProductEntry {
+  img: string;
+  title: string;
+  desc: string;
+  /* Optional custom paragraph for the Expertise page; falls back to a
+     generic partner-manufacturer blurb when omitted. */
+  brief?: string;
+  /* Set true to hide the "0N" numeral on the Expertise page. */
+  hideNumber?: boolean;
+}
+
+export const PRODUCTS: ProductEntry[] = [
   {
     img: "/images/PRODUCT_SECTION_FURNITURE_IMAGE_ICON.jpeg",
     title: "Furniture",
     desc: "Indoor, outdoor, and office furnishings",
+    brief:
+      "Working with the world's most renowned furniture manufacturers and artisan workshops, we deliver exclusive, custom-made pieces that combine superior craftsmanship with contemporary elegance. From luxurious residential interiors to prestigious commercial and hospitality developments, every detail is carefully considered to achieve a flawless result.",
+    hideNumber: true,
   },
   {
     img: "/images/lighting_noctambule.jpg",
