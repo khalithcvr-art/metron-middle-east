@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     category: "residential",
     location: "Dubai",
     cover: "/images/burj_vista_image_1.png",
-    gallery: ["/images/burj_vista_image_1.png", "/images/BURJ_VISTA.png"],
+    gallery: ["/images/burj_vista_image_1.png"],
   },
   {
     id: "wade",
