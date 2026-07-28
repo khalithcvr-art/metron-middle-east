@@ -86,7 +86,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "opera",
-    title: "Opera Back House",
+    title: "Opera Dubai",
     category: "venues",
     location: "Dubai",
     cover: "/images/OPERA_1.png",
