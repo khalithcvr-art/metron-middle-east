@@ -122,12 +122,12 @@ export default function Home() {
             <span className="m-partners-label m-reveal">Trusted By Landmark Developments Across GCC</span>
             <div className="m-partners-grid m-reveal">
               {/* Using stylized text for partner names to represent their logos in a high-end way */}
-              <div className="m-partner">ETIHAD</div>
+              <div className="m-partner">ETIHAD ARENA</div>
               <div className="m-partner">EMAAR</div>
               <div className="m-partner">ALDAR</div>
               <div className="m-partner">HILTON</div>
-              <div className="m-partner">RITZ CARLTON</div>
-              <div className="m-partner">MUBADALA</div>
+              <div className="m-partner">MODON</div>
+              <div className="m-partner">ZAPIA AL AIN ZOO</div>
             </div>
           </div>
         </div>
