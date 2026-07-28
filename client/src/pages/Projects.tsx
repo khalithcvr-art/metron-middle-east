@@ -9,7 +9,7 @@ const FEATURED_IDS = [
   "etihad-arena", // Etihad Arena
   "broadway", // 8th Broadway London
   "ritz-bahrain", // Jumeira Saray Resort Dubai
-  "burj", // Burj Vista
+  "velodrome", // Velodrome Modern
   "royal-blue", // The Royal Blue Resort
 ];
 
