@@ -251,16 +251,25 @@ export const PRODUCTS: ProductEntry[] = [
     img: "/images/lighting_noctambule.jpg",
     title: "Lighting",
     desc: "Premium lighting fixtures",
+    brief:
+      "From elegant decorative fixtures to custom-made statement pieces, every product is selected or designed to complement the unique character of each space.",
+    hideNumber: true,
   },
   {
     img: "/images/floor_covering_rug.jpg",
     title: "Floor Coverings",
     desc: "Wood, carpets, and premium rugs",
+    brief:
+      "We supply premium floor covering solutions for residential, commercial, hospitality, and corporate environments. Our product portfolio includes carefully selected rugs, carpets, and wood flooring that meet the highest standards of quality, durability, and design.",
+    hideNumber: true,
   },
   {
     img: "/images/decoratives_wallpaper.jpg",
     title: "Decoratives",
     desc: "Wallpapers and decorative elements",
+    brief:
+      "wallpapers, wall décor, mirrors, artwork, decorative accessories, and interior accents. Every product is carefully selected for its quality, durability, and refined finish.",
+    hideNumber: true,
   },
 ];
 
