@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "hilton-ad",
-    title: "Hilton Abu Dhabi",
+    title: "Yas Bay Abu Dhabi",
     category: "hospitality",
     location: "Abu Dhabi",
     cover: "/images/hilton_abu_dhabi.jpg",
