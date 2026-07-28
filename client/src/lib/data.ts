@@ -48,8 +48,9 @@ export const PROJECTS: Project[] = [
     title: "Velodrome Modern",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/VELODROME_PIC_1.jpg",
+    cover: "/images/velodrome_main.jpg",
     gallery: [
+      "/images/velodrome_main.jpg",
       "/images/VELODROME_PIC_1.jpg",
       "/images/VELODROME_PIC_2.jpg",
       "/images/VELODROME_PIC_3.jpg",
