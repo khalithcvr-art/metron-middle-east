@@ -231,12 +231,12 @@ export const PRODUCTS = [
   {
     img: "/images/PRODUCT_SECTION_FURNITURE_IMAGE_ICON.jpeg",
     title: "Furniture",
-    desc: "Indoor, outdoor, and office furniture solutions",
+    desc: "Indoor, outdoor, and office furnishings",
   },
   {
     img: "/images/lighting_noctambule.jpg",
     title: "Lighting",
-    desc: "Premium lighting fixtures and solutions",
+    desc: "Premium lighting fixtures",
   },
   {
     img: "/images/floor_covering_rug.jpg",
