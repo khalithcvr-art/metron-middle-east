@@ -234,12 +234,12 @@ export const PRODUCTS = [
     desc: "Premium lighting fixtures and solutions",
   },
   {
-    img: "/images/FLOOR_COVERING_SECTION_IMAGE.webp",
+    img: "/images/floor_covering_rug.jpg",
     title: "Floor Coverings",
     desc: "Wood, carpets, and premium rugs",
   },
   {
-    img: "/images/DECORATIVE_SECTION_IMAGE.webp",
+    img: "/images/decoratives_wallpaper.jpg",
     title: "Decoratives",
     desc: "Wallpapers and decorative elements",
   },

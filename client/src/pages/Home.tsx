@@ -96,7 +96,8 @@ export default function Home() {
             <div className="m-hero-eyebrow">Metron Middle East</div>
             <h1 className="m-hero-title">
               Excellence in <br />
-              <em>Trading</em> Solutions
+              Interior, Exterior Furnishings <br />
+              and <em>Decorations</em> Solutions
             </h1>
             <p className="m-hero-subtitle">
               Delivering premium products and exceptional services across the
