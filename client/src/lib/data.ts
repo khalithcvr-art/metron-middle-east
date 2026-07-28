@@ -178,15 +178,15 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ritz-bahrain",
-    title: "Ritz Carlton Bahrain",
+    title: "Jumeira Saray Resort Dubai",
     category: "hospitality",
-    location: "Bahrain",
-    cover: "/images/RITZ_CARLTON.png",
+    location: "Dubai",
+    cover: "/images/jumeira_saray_1.png",
     gallery: [
-      "/images/RITZ_CARLTON.png",
-      "/images/ritz_bahrain_3.webp",
-      "/images/ritz_bahrain_1.webp",
-      "/images/ritz_bahrain_2.webp",
+      "/images/jumeira_saray_1.png",
+      "/images/jumeira_saray_2.jpg",
+      "/images/jumeira_saray_3.jpg",
+      "/images/jumeira_saray_4.jpg",
     ],
   },
   {
