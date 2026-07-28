@@ -240,7 +240,7 @@ export interface ProductEntry {
 
 export const PRODUCTS: ProductEntry[] = [
   {
-    img: "/images/PRODUCT_SECTION_FURNITURE_IMAGE_ICON.jpeg",
+    img: "/images/furniture_twins.jpg",
     title: "Furniture",
     desc: "Indoor, outdoor, and office furnishings",
     brief:
