@@ -229,7 +229,7 @@ export const PRODUCTS = [
     desc: "Indoor, outdoor, and office furniture solutions",
   },
   {
-    img: "/images/LIGHTING_SECTION_IMAGE.jpeg",
+    img: "/images/lighting_noctambule.jpg",
     title: "Lighting",
     desc: "Premium lighting fixtures and solutions",
   },
