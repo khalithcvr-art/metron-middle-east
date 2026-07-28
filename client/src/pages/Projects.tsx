@@ -8,8 +8,7 @@ const FEATURED_IDS = [
   "qasr", // Qasr Al Watan
   "etihad-arena", // Etihad Arena
   "broadway", // 8th Broadway London
-  "ritz-bahrain", // Ritz Carlton Bahrain
-  "wade", // Wade Adams Dubai
+  "ritz-bahrain", // Jumeira Saray Resort Dubai
   "burj", // Burj Vista
   "royal-blue", // The Royal Blue Resort
 ];
