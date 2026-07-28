@@ -216,15 +216,10 @@ export const PROJECTS: Project[] = [
 ];
 
 /* Standalone photo reel shown by the "Our Projects Gallery" card on the
-   Projects page. Sourced from the company's shared project album.
-   Numbers skip photos that were removed from the reel. */
-const GALLERY_IMAGE_NUMBERS = [
-  1, 2, 3, 4, 7, 8, 9, 10, 13, 14, 15, 17, 19, 20, 21, 22, 23, 26, 30, 31, 33,
-  34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54,
-  55, 57, 58, 59, 61, 63, 64, 65, 66,
-];
-export const GALLERY_IMAGES: string[] = GALLERY_IMAGE_NUMBERS.map(
-  (n) => `/images/gallery/gallery_${String(n).padStart(2, "0")}.jpg`,
+   Projects page. Sourced from the company's shared project album. */
+export const GALLERY_IMAGES: string[] = Array.from(
+  { length: 49 },
+  (_, i) => `/images/gallery/gallery_${String(i + 1).padStart(2, "0")}.jpg`,
 );
 
 export interface ProductEntry {
