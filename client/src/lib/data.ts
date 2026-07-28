@@ -181,10 +181,10 @@ export const PROJECTS: Project[] = [
     title: "Jumeira Saray Resort Dubai",
     category: "hospitality",
     location: "Dubai",
-    cover: "/images/jumeira_saray_1.png",
+    cover: "/images/jumeira_saray_2.jpg",
     gallery: [
-      "/images/jumeira_saray_1.png",
       "/images/jumeira_saray_2.jpg",
+      "/images/jumeira_saray_1.png",
       "/images/jumeira_saray_3.jpg",
       "/images/jumeira_saray_4.jpg",
     ],
