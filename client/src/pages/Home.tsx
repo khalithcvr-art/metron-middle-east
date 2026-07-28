@@ -96,8 +96,8 @@ export default function Home() {
             <div className="m-hero-eyebrow">Metron Middle East</div>
             <h1 className="m-hero-title">
               Proven in <br />
-              Interior, Exterior Furnishings <br />
-              and <em>Decoration</em> Solutions
+              <em>Interior, Exterior Furnishings</em> <br />
+              and Decoration Solutions
             </h1>
             <div className="m-hero-buttons">
               <Link href="/expertise" className="m-btn m-btn-primary">
