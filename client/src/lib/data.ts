@@ -105,8 +105,8 @@ export const PROJECTS: Project[] = [
     title: "Wade Adams Dubai",
     category: "commercial",
     location: "Dubai",
-    cover: "/images/wade_adams.png",
-    gallery: ["/images/wade_adams.png"],
+    cover: "/images/wade_adams_logo.png",
+    gallery: ["/images/wade_adams_logo.png"],
   },
   {
     id: "modon",
