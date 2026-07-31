@@ -81,8 +81,8 @@ export const PROJECTS: Project[] = [
     title: "Yas Bay Abu Dhabi",
     category: "hospitality",
     location: "Abu Dhabi",
-    cover: "/images/hilton_abu_dhabi.jpg",
-    gallery: ["/images/hilton_abu_dhabi.jpg"],
+    cover: "/images/yas_bay_1.jpg",
+    gallery: ["/images/yas_bay_1.jpg", "/images/yas_bay_2.jpg", "/images/yas_bay_3.jpg"],
   },
   {
     id: "opera",
