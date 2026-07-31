@@ -218,7 +218,7 @@ export const PROJECTS: Project[] = [
 /* Standalone photo reel shown by the "Our Projects Gallery" card on the
    Projects page. Sourced from the company's shared project album. */
 export const GALLERY_IMAGES: string[] = Array.from(
-  { length: 53 },
+  { length: 49 },
   (_, i) => `/images/gallery/gallery_${String(i + 1).padStart(2, "0")}.jpg`,
 );
 
