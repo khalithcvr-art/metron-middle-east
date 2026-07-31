@@ -26,8 +26,8 @@ export const PROJECTS: Project[] = [
     title: "Hilalco Abu Dhabi",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/hilalco.jpg",
-    gallery: ["/images/hilalco.jpg"],
+    cover: "/images/hilalco_logo.jpg",
+    gallery: ["/images/hilalco_logo.jpg"],
   },
   {
     id: "qasr",
