@@ -113,8 +113,8 @@ export const PROJECTS: Project[] = [
     title: "Modon Abu Dhabi",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/modon.png",
-    gallery: ["/images/modon.png"],
+    cover: "/images/modon_logo.jpg",
+    gallery: ["/images/modon_logo.jpg"],
   },
   {
     id: "broadway",
