@@ -7,15 +7,39 @@ import Gallery from "../components/Gallery";
 function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+
+    try {
+      const response = await fetch("/send-lead.php", {
+        method: "POST",
+        body: new FormData(form),
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.ok) {
+        throw new Error(
+          result?.error ??
+            "We could not send your message right now. Please email us directly at info@metron.ae.",
+        );
+      }
+
+      form.reset();
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "We could not send your message right now. Please email us directly at info@metron.ae.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -35,22 +59,22 @@ function LeadForm() {
       <div className="m-form-row">
         <div className="m-form-group">
           <label htmlFor="name">Full Name</label>
-          <input type="text" id="name" className="m-form-control" placeholder="John Doe" required />
+          <input type="text" id="name" name="name" className="m-form-control" placeholder="John Doe" required />
         </div>
         <div className="m-form-group">
           <label htmlFor="email">Email Address</label>
-          <input type="email" id="email" className="m-form-control" placeholder="john@company.com" required />
+          <input type="email" id="email" name="email" className="m-form-control" placeholder="john@company.com" required />
         </div>
       </div>
-      
+
       <div className="m-form-row">
         <div className="m-form-group">
           <label htmlFor="company">Company</label>
-          <input type="text" id="company" className="m-form-control" placeholder="Your Company Name" />
+          <input type="text" id="company" name="company" className="m-form-control" placeholder="Your Company Name" />
         </div>
         <div className="m-form-group">
           <label htmlFor="project">Project Type</label>
-          <select id="project" className="m-form-control" required>
+          <select id="project" name="project" className="m-form-control" required>
             <option value="">Select Project Type</option>
             <option value="hospitality">Hospitality</option>
             <option value="commercial">Commercial</option>
@@ -62,8 +86,25 @@ function LeadForm() {
 
       <div className="m-form-group">
         <label htmlFor="message">Project Details</label>
-        <textarea id="message" className="m-form-control" placeholder="Tell us about your project requirements..." required></textarea>
+        <textarea id="message" name="message" className="m-form-control" placeholder="Tell us about your project requirements..." required></textarea>
       </div>
+
+      {/* Spam trap: hidden from people, tempting to bots. Submissions that
+          fill this in are silently discarded server-side. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+      />
+
+      {error && (
+        <p role="alert" style={{ color: '#b91c1c', marginTop: '20px', textAlign: 'center' }}>
+          {error}
+        </p>
+      )}
 
       <div style={{ textAlign: 'center', marginTop: '32px' }}>
         <button type="submit" className="m-btn m-btn-primary" disabled={loading} style={{ minWidth: '200px' }}>
