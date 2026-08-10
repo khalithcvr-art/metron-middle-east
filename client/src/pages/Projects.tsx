@@ -5,13 +5,11 @@ import Gallery from "../components/Gallery";
 
 /* The landmark projects to highlight on the landing view, in display order. */
 const FEATURED_IDS = [
+  "sapia", // Zapia Al Ain Zoo
+  "opera", // Opera Dubai
   "qasr", // Qasr Al Watan
+  "velodrome", // Velodrome
   "etihad-arena", // Etihad Arena
-  "broadway", // 8th Broadway London
-  "ritz-bahrain", // Ritz Carlton Bahrain
-  "wade", // Wade Adams Dubai
-  "burj", // Burj Vista
-  "royal-blue", // The Royal Blue Resort
 ];
 
 /* Reusable project card used by both the highlights and the full portfolio. */
