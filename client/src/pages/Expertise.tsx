@@ -28,14 +28,16 @@ export default function Expertise() {
                   <img src={p.img} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="m-expertise-text" style={{ flex: 1 }}>
-                  <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--m-gold)', fontWeight: 600 }}>0{idx + 1}</span>
+                  {!p.hideNumber && (
+                    <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--m-gold)', fontWeight: 600 }}>0{idx + 1}</span>
+                  )}
                   <h3 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', margin: '16px 0' }}>{p.title}</h3>
                   <p style={{ fontSize: '1.1rem', color: 'var(--m-ink-soft)', lineHeight: 1.8 }}>{p.desc}</p>
                   <p style={{ marginTop: '24px', color: 'var(--m-ink-soft)' }}>
-                    We partner with the world's most prestigious manufacturers to bring 
-                    bespoke {p.title.toLowerCase()} solutions to the Middle East. Our 
-                    team ensures that every product meets the highest standards of quality 
-                    and design expected by our luxury clients.
+                    {p.brief ?? `We partner with the world's most prestigious manufacturers to bring
+                    bespoke ${p.title.toLowerCase()} solutions to the Middle East. Our
+                    team ensures that every product meets the highest standards of quality
+                    and design expected by our luxury clients.`}
                   </p>
                 </div>
               </div>

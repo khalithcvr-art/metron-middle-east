@@ -15,7 +15,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "sapia",
-    title: "Sapia Al Ain Zoo",
+    title: "Zapia Al Ain Zoo",
     category: "venues",
     location: "Abu Dhabi",
     cover: "/images/AL_AIN_ZOO.jpeg",
@@ -26,8 +26,8 @@ export const PROJECTS: Project[] = [
     title: "Hilalco Abu Dhabi",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/hilalco.jpg",
-    gallery: ["/images/hilalco.jpg"],
+    cover: "/images/hilalco_logo.jpg",
+    gallery: ["/images/hilalco_logo.jpg"],
   },
   {
     id: "qasr",
@@ -45,11 +45,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "velodrome",
-    title: "Velodrome Modern",
+    title: "Velodrome",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/VELODROME_PIC_1.jpg",
+    cover: "/images/velodrome_main.jpg",
     gallery: [
+      "/images/velodrome_main.jpg",
       "/images/VELODROME_PIC_1.jpg",
       "/images/VELODROME_PIC_2.jpg",
       "/images/VELODROME_PIC_3.jpg",
@@ -77,15 +78,15 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "hilton-ad",
-    title: "Hilton Abu Dhabi",
+    title: "Yas Bay Abu Dhabi",
     category: "hospitality",
     location: "Abu Dhabi",
-    cover: "/images/hilton_abu_dhabi.jpg",
-    gallery: ["/images/hilton_abu_dhabi.jpg"],
+    cover: "/images/yas_bay_1.jpg",
+    gallery: ["/images/yas_bay_1.jpg", "/images/yas_bay_2.jpg", "/images/yas_bay_3.jpg"],
   },
   {
     id: "opera",
-    title: "Opera Back House",
+    title: "Opera Dubai",
     category: "venues",
     location: "Dubai",
     cover: "/images/OPERA_1.png",
@@ -96,24 +97,24 @@ export const PROJECTS: Project[] = [
     title: "Burj Vista",
     category: "residential",
     location: "Dubai",
-    cover: "/images/burj_vista_image_1.png",
-    gallery: ["/images/burj_vista_image_1.png", "/images/BURJ_VISTA.png"],
+    cover: "/images/burj_vista_tower.jpg",
+    gallery: ["/images/burj_vista_tower.jpg"],
   },
   {
     id: "wade",
     title: "Wade Adams Dubai",
     category: "commercial",
     location: "Dubai",
-    cover: "/images/wade_adams.png",
-    gallery: ["/images/wade_adams.png"],
+    cover: "/images/wade_adams_logo.png",
+    gallery: ["/images/wade_adams_logo.png"],
   },
   {
     id: "modon",
     title: "Modon Abu Dhabi",
     category: "commercial",
     location: "Abu Dhabi",
-    cover: "/images/modon.png",
-    gallery: ["/images/modon.png"],
+    cover: "/images/modon_logo.jpg",
+    gallery: ["/images/modon_logo.jpg"],
   },
   {
     id: "broadway",
@@ -177,15 +178,15 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ritz-bahrain",
-    title: "Ritz Carlton Bahrain",
+    title: "Jumeira Saray Resort Dubai",
     category: "hospitality",
-    location: "Bahrain",
-    cover: "/images/RITZ_CARLTON.png",
+    location: "Dubai",
+    cover: "/images/jumeira_saray_2.jpg",
     gallery: [
-      "/images/RITZ_CARLTON.png",
-      "/images/ritz_bahrain_3.webp",
-      "/images/ritz_bahrain_1.webp",
-      "/images/ritz_bahrain_2.webp",
+      "/images/jumeira_saray_2.jpg",
+      "/images/jumeira_saray_1.png",
+      "/images/jumeira_saray_3.jpg",
+      "/images/jumeira_saray_4.jpg",
     ],
   },
   {
@@ -217,30 +218,53 @@ export const PROJECTS: Project[] = [
 /* Standalone photo reel shown by the "Our Projects Gallery" card on the
    Projects page. Sourced from the company's shared project album. */
 export const GALLERY_IMAGES: string[] = Array.from(
-  { length: 66 },
+  { length: 49 },
   (_, i) => `/images/gallery/gallery_${String(i + 1).padStart(2, "0")}.jpg`,
 );
 
-export const PRODUCTS = [
+export interface ProductEntry {
+  img: string;
+  title: string;
+  desc: string;
+  /* Optional custom paragraph for the Expertise page; falls back to a
+     generic partner-manufacturer blurb when omitted. */
+  brief?: string;
+  /* Set true to hide the "0N" numeral on the Expertise page. */
+  hideNumber?: boolean;
+}
+
+export const PRODUCTS: ProductEntry[] = [
   {
-    img: "/images/PRODUCT_SECTION_FURNITURE_IMAGE_ICON.jpeg",
+    img: "/images/furniture_twins.jpg",
     title: "Furniture",
-    desc: "Indoor, outdoor, and office furniture solutions",
+    desc: "Indoor, outdoor, and office furnishings",
+    brief:
+      "Working with the world's most renowned furniture manufacturers and artisan workshops, we deliver exclusive, custom-made pieces that combine superior craftsmanship with contemporary elegance. From luxurious residential interiors to prestigious commercial and hospitality developments, every detail is carefully considered to achieve a flawless result.",
+    hideNumber: true,
   },
   {
-    img: "/images/LIGHTING_SECTION_IMAGE.jpeg",
+    img: "/images/lighting_noctambule.jpg",
     title: "Lighting",
-    desc: "Premium lighting fixtures and solutions",
+    desc: "Premium lighting fixtures",
+    brief:
+      "From elegant decorative fixtures to custom-made statement pieces, every product is selected or designed to complement the unique character of each space.",
+    hideNumber: true,
   },
   {
-    img: "/images/FLOOR_COVERING_SECTION_IMAGE.webp",
+    img: "/images/floor_covering_rug.jpg",
     title: "Floor Coverings",
     desc: "Wood, carpets, and premium rugs",
+    brief:
+      "We supply premium floor covering solutions for residential, commercial, hospitality, and corporate environments. Our product portfolio includes carefully selected rugs, carpets, and wood flooring that meet the highest standards of quality, durability, and design.",
+    hideNumber: true,
   },
   {
-    img: "/images/DECORATIVE_SECTION_IMAGE.webp",
+    img: "/images/decoratives_wallpaper.jpg",
     title: "Decoratives",
     desc: "Wallpapers and decorative elements",
+    brief:
+      "wallpapers, wall décor, mirrors, artwork, decorative accessories, and interior accents. Every product is carefully selected for its quality, durability, and refined finish.",
+    hideNumber: true,
   },
 ];
 

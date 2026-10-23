@@ -10,13 +10,17 @@ export default function About() {
         <div className="m-container">
           <div style={{ maxWidth: '800px' }}>
             <h2 className="m-section-title m-reveal" style={{ textAlign: 'left' }}>
-              Our <em>Heritage</em>
+              About <em>Us</em>
             </h2>
             <div className="m-title-rule" style={{ margin: '24px 0' }} />
             <p className="m-section-sub m-reveal" style={{ textAlign: 'left', margin: 0, fontSize: '1.4rem' }}>
-              Established in 2008, Metron Middle East has grown from a specialized 
-              trading house into a leading provider of architectural solutions for 
-              the region's most iconic developments.
+              Established in Dubai in 2015, we provide carefully curated furniture,
+              decorative finishes, wallpapers, and floor coverings for distinguished
+              architectural and interior projects.
+            </p>
+            <p className="m-section-sub m-reveal" style={{ textAlign: 'left', margin: '20px 0 0', fontSize: '1.4rem' }}>
+              Our work is defined by material expertise, design integrity, and an
+              uncompromising commitment to quality.
             </p>
           </div>
         </div>
@@ -27,20 +31,18 @@ export default function About() {
         <div className="m-container">
           <div className="m-contact-content">
             <div className="m-reveal" style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '2rem', marginBottom: '24px', fontFamily: 'var(--font-display)' }}>Our Mission</h3>
+              <h3 style={{ fontSize: '2rem', marginBottom: '24px', fontFamily: 'var(--font-display)' }}>Mission</h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--m-ink-soft)' }}>
-                To bridge the gap between global manufacturing excellence and Middle Eastern 
-                architectural ambition. We source, supply, and consult on premium interior 
-                and exterior solutions that elevate the human experience in hospitality, 
-                commercial, and residential spaces.
+                To support visionary projects with carefully selected products,
+                professional expertise, and a pursuit of timeless design excellence.
               </p>
             </div>
             <div className="m-reveal" style={{ flex: 1, paddingLeft: '40px', borderLeft: '1px solid var(--m-line)' }}>
-              <h3 style={{ fontSize: '2rem', marginBottom: '24px', fontFamily: 'var(--font-display)' }}>Our Vision</h3>
+              <h3 style={{ fontSize: '2rem', marginBottom: '24px', fontFamily: 'var(--font-display)' }}>Vision</h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--m-ink-soft)' }}>
-                To be the first-choice partner for developers and architects in the GCC and 
-                Europe, recognized for our uncompromising commitment to quality, 
-                sustainability, and project excellence.
+                To become a trusted reference in premium interior solutions,
+                recognized for exceptional products, professional expertise, and
+                excellence in every distinguished project.
               </p>
             </div>
           </div>
