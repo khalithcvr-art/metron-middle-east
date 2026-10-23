@@ -1,0 +1,82 @@
+# ---------------------------------------------------------------------------
+# Metron Middle East - Apache configuration for the static site.
+#
+# This lives in client/public/ so Vite copies it into the build output on every
+# build, which keeps the production server configuration in version control
+# instead of only existing as a manual upload on the server.
+# ---------------------------------------------------------------------------
+
+# ---- Single-page-app routing ----------------------------------------------
+# Serve real files and directories as they are; send everything else to
+# index.html so the client-side router can handle the route.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ---- Security headers ------------------------------------------------------
+<IfModule mod_headers.c>
+  # Keep browsers on HTTPS for a year. Add "; includeSubDomains" once every
+  # subdomain is known to serve HTTPS, and "; preload" only when submitting to
+  # the browser preload list - both are hard to undo.
+  Header always set Strict-Transport-Security "max-age=31536000"
+
+  # Stop browsers from guessing content types.
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Refuse to be framed by other origins (clickjacking).
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Send only the origin, not the full path, as referrer to other sites.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # A brochure site needs none of these device APIs.
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Deliberately permissive where the site genuinely needs it: Google Fonts for
+  # the stylesheet and the font files, the Google Maps iframe on the contact
+  # page, and 'unsafe-inline' styles because the pages use React style props.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://maps.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+
+  # Don't advertise the stack. This clears PHP's own header; the "PleskLin"
+  # value is added by Plesk's nginx proxy and has to be removed there.
+  Header always unset X-Powered-By
+</IfModule>
+
+# ---- Caching ---------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Bundles under /assets/ carry a content hash in their filename, so a change
+  # always produces a new URL and these can be cached indefinitely.
+  <FilesMatch "\.(?:js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Photos keep their original filenames, so cache them for a week only -
+  # replacing one in place then takes effect without having to rename it.
+  <FilesMatch "\.(?:jpg|jpeg|png|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # index.html must never be cached, or visitors keep loading the old bundle
+  # after a deploy.
+  <FilesMatch "\.(?:html|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ---- Deny dotfiles ---------------------------------------------------------
+# Plesk already blocks these, but not every host does. The module guard keeps
+# this syntax from erroring on Apache 2.2.
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+# ---- Compression -----------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>

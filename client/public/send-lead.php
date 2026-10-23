@@ -16,10 +16,65 @@ header('Content-Type: application/json; charset=utf-8');
 const RECIPIENT   = 'info@metron.ae';
 const FROM_HEADER = 'Metron Website <noreply@metron.ae>';
 
+/* Submissions allowed per IP address per hour. A real visitor never gets
+   close; a script trying to pump spam through the domain does immediately. */
+const RATE_LIMIT_MAX    = 5;
+const RATE_LIMIT_WINDOW = 3600;
+
 function fail(string $message, int $status = 400): void {
     http_response_code($status);
     echo json_encode(['ok' => false, 'error' => $message]);
     exit;
+}
+
+/**
+ * Private storage directory, one level above the web root so nothing in it is
+ * ever downloadable. Created on first use. Returns null if it cannot be made
+ * writable, and every caller treats that as "skip" rather than "fail".
+ */
+function storage_dir(): ?string {
+    $dir = __DIR__ . '/../private';
+    if (!is_dir($dir)) {
+        @mkdir($dir, 0700, true);
+    }
+    return is_dir($dir) && is_writable($dir) ? $dir : null;
+}
+
+/**
+ * Sliding-window rate limit, keyed on a hash of the caller's IP.
+ *
+ * Deliberately fails open: if the counter cannot be read or written we let the
+ * submission through, because silently dropping a genuine enquiry is worse for
+ * the business than letting one extra message past.
+ */
+function rate_limited(?string $dir, string $ip): bool {
+    if ($dir === null) {
+        return false;
+    }
+    $file = $dir . '/ratelimit-' . sha1($ip) . '.json';
+    $now  = time();
+
+    $hits = [];
+    if (is_file($file)) {
+        $decoded = json_decode((string) @file_get_contents($file), true);
+        if (is_array($decoded)) {
+            $hits = $decoded;
+        }
+    }
+
+    /* Drop anything older than the window. */
+    $hits = array_values(array_filter(
+        $hits,
+        static fn($t) => is_int($t) && $t > $now - RATE_LIMIT_WINDOW
+    ));
+
+    if (count($hits) >= RATE_LIMIT_MAX) {
+        return true;
+    }
+
+    $hits[] = $now;
+    @file_put_contents($file, json_encode($hits), LOCK_EX);
+    return false;
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -79,6 +134,12 @@ $headers = implode("\r\n", [
     'X-Mailer: metron.ae lead form',
 ]);
 
+$storage = storage_dir();
+
+if (rate_limited($storage, (string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown'))) {
+    fail('You have sent several enquiries already. Please email us directly at ' . RECIPIENT . '.', 429);
+}
+
 $sent = @mail(
     RECIPIENT,
     mb_encode_mimeheader($subject, 'UTF-8'),
@@ -93,10 +154,9 @@ $sent = @mail(
  * publicly readable.
  */
 if (!$sent) {
-    $logDir = __DIR__ . '/../private';
-    if (is_dir($logDir) && is_writable($logDir)) {
+    if ($storage !== null) {
         @file_put_contents(
-            $logDir . '/lead-submissions.log',
+            $storage . '/lead-submissions.log',
             "==== " . date('Y-m-d H:i:s') . " (mail send FAILED) ====\n" . $body . "\n",
             FILE_APPEND | LOCK_EX
         );
